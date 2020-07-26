@@ -1,0 +1,20 @@
+# HTTP Cookie File downloaded with cookies.txt by Genuinous @genuinous
+# This file can be used by wget, curl, aria2c and other standard compliant tools.
+# Usage Examples:
+#   1) wget -x --load-cookies cookies.txt "https://maoyan.com/films/1297466"
+#   2) curl --cookie cookies.txt "https://maoyan.com/films/1297466"
+#   3) aria2c --load-cookies cookies.txt "https://maoyan.com/films/1297466"
+#
+.maoyan.com	TRUE	/films	FALSE	1657927433	__mta	250994361.1595570037032.1595718011867.1595719433847.19
+maoyan.com	FALSE	/	FALSE	1598162032	uuid_n_v	v1
+maoyan.com	FALSE	/	FALSE	1598162032	uuid	08569800CD7211EABD387F49F1B5315900BA55B461BB471B9885068BA7EE38FD
+.maoyan.com	TRUE	/	FALSE	1690178035	_lxsdk_cuid	1737f629a02c8-0b2abd9eb696c-31627404-2a3000-1737f629a02c8
+.maoyan.com	TRUE	/	FALSE	1690178035	_lxsdk	08569800CD7211EABD387F49F1B5315900BA55B461BB471B9885068BA7EE38FD
+maoyan.com	FALSE	/	FALSE	1753250036	mojo-uuid	cb3b86dc5b8070bbd1a2e1f760f3f3d1
+maoyan.com	FALSE	/	FALSE	0	_csrf	7fbc36a19cad42ac9876c63ab6a323192702cd55c6aaac2c08e26d855e6d2a9f
+.maoyan.com	TRUE	/	FALSE	1627255433	Hm_lvt_703e94591e87be68cc8da0da7cbd0be2	1595570035,1595570247,1595704101
+.maoyan.com	TRUE	/	FALSE	1657923095	__mta	250994361.1595570037032.1595715044328.1595715095371.18
+maoyan.com	FALSE	/	FALSE	1595721233	mojo-session-id	{&quot;id&quot;:&quot;f2b5d6fe9e8319b7ca02303b9b5c5ae4&quot;,&quot;time&quot;:1595718007126}
+maoyan.com	FALSE	/	FALSE	1595721233	mojo-trace-id	3
+.maoyan.com	TRUE	/	FALSE	0	Hm_lpvt_703e94591e87be68cc8da0da7cbd0be2	1595719433
+.maoyan.com	TRUE	/	FALSE	1595721233	_lxsdk_s	1738834790f-40e-b89-23e%7C%7C4
