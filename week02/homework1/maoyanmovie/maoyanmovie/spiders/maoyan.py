@@ -57,7 +57,7 @@ class MaoyanSpider(scrapy.Spider):
         genre = ""
         genres = movie.xpath('./ul/li/a/text()').getall()
         for g in genres:
-            genre += g + " "
+            genre += g.strip()
         print(f'类型：{genre}')
 
         return [film_name, plan_date, genre]
