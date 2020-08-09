@@ -1,16 +1,29 @@
 import argparse
 import ipaddress
 import os
+import socket
 import json
 from multiprocessing import Manager
 from multiprocessing.pool import Pool
 
-def ping(hostname):
-  print(hostname)
+def tcp(q, ip, port):
+  print(f'tcp scaning ip: {ip}, port: {port}')
+  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  try:
+    s.connect((ip, port))
+    print(f'{ip}:{port}, "is up!"')
+    s.close()
+    q.put(f'{ip}:{port}')
+  except Exception as e:
+    print(e)
+
+def ping(q, hostname):
+  print(f'ip scaning ip: {hostname}')
   response = os.system("ping -c 1 " + hostname)
 
   if response == 0:
     print(f'{hostname}, "is up!"')
+    q.put(f'{hostname}')
   else:
     print(f'{hostname}, "is down!"')
   return hostname
@@ -66,19 +79,23 @@ if __name__ == "__main__":
     print(f'Start IP: {start_ip}')
     print(f'End IP: {end_ip}')
   except Exception as e:
-    print("invalid ip string\n", e)
-    exit(1)
+    raise ValueError("invalid ip string\n", e)
 
   # main scan logic
-  print("Start scanning...")
-  output_list = []
-  for ip_int in range(int(start_ip), int(end_ip)):
-    res = p.apply_async(ping, args=(str(ipaddress.IPv4Address(ip_int)),))
-    print(type(res.get(timeout=30)))
+  print("******************** Start scanning **********************")
+  q = Manager().Queue()
+  if mode == "ip":
+    for ip_int in range(int(start_ip), int(end_ip) + 1):
+      res = p.apply_async(ping, args=(q, str(ipaddress.IPv4Address(ip_int)),))
+
+  if mode == "tcp":
+    for ip_int in range(int(start_ip), int(end_ip) + 1):
+      for port in range(25):
+        p.apply_async(tcp, args=(q , str(ipaddress.IPv4Address(ip_int)), port, ))
 
   p.close()
   p.join()
-  print("Scan finished.")
+  print("********************* Scan finished **********************")
   p.terminate()
 
   # write to output file
